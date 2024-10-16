@@ -34,8 +34,7 @@ except ImportError:
 from datetime import date, datetime
 
 import dateutil.parser
-from pygeoif import geometry
-from pygeoif.geometry import as_shape as asShape
+from pygeoif import geometry, shape
 from pytz import utc
 
 try:
@@ -291,11 +290,11 @@ class _Coordinates(object):
             except TypeError:
                 self.coords = []
                 for coord in grouper(coords, 2):
-                    geom = asShape(coord[1])
+                    geom = shape(coord[1])
                     assert(isinstance(geom, geometry.Point))
                     self.coords.append(_Coordinate(*geom.coords[0], t=coord[0]))
         else:
-            geom = asShape(coords)
+            geom = shape(coords)
             if isinstance(geom, geometry.Point):
                 self.coords = [_Coordinate(*geom.coords[0])]
 
@@ -694,7 +693,7 @@ class _Positions(object):
                     raise ValueError
             self.coords = coords
         else:
-            geom = asShape(coords)
+            geom = shape(coords)
             if isinstance(geom, geometry.Polygon):
                 geom = geom.exterior
             if isinstance(geom, (geometry.LineString, geometry.LinearRing)):
