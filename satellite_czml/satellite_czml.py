@@ -45,7 +45,7 @@ class satellite():
                  show_label=True, show_path=True):
 
         # Validate the inputs
-        self.id = int(tle[1][2:7])
+        self.id = tle[1][2:7]
 
         if name is None:
             self.tle = self.__check_tle_for_names(tle)

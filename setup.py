@@ -5,7 +5,7 @@ with open('README.md') as readme_file:
 
 setup_args = dict(
     name='satellite_czml',
-    version='0.1.1',
+    version='0.1.2',
     description='Creates a CZML string based on TLE (Two Line Element set) data for plotting satellites on the open source CesiumJS JavaScript library',
     long_description_content_type="text/markdown",
     long_description=README,
